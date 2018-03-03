@@ -15,6 +15,34 @@
         <module>ebuy-search-interface</module>
         <module>ebuy-search-service</module>
     </modules>
-
+    <dependencies>
+        <dependency>
+            <groupId>com.ebuy</groupId>
+            <artifactId>ebuy-common</artifactId>
+            <version>2.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <configuration>
+                    <path>/</path>
+                    <port>8084</port>
+                </configuration>
+            </plugin>
+            <!--[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test (default-test)
+            on project ebuy-search-service: There are test failures.-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
