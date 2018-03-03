@@ -1,4 +1,4 @@
-package com.taotao.dao;
+package com.ebuy.dao;
 
 import com.ebuy.pojo.TbOrderItem;
 import com.ebuy.pojo.TbOrderItemQuery;

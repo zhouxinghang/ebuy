@@ -1,4 +1,4 @@
-package com.taotao.service.impl;
+package com.ebuy.service.impl;
 
 import com.ebuy.common.pojo.EasyUITreeNode;
 import com.ebuy.dao.TbItemCatDao;

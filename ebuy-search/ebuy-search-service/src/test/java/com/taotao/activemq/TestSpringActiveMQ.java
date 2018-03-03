@@ -1,4 +1,4 @@
-package com.taotao.activemq;
+package com.ebuy.activemq;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

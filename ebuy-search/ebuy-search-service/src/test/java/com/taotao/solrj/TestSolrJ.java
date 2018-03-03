@@ -1,4 +1,4 @@
-package com.taotao.solrj;
+package com.ebuy.solrj;
 
 import java.util.List;
 import java.util.Map;

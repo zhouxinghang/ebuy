@@ -1,4 +1,4 @@
-package com.taotao.freemarker;
+package com.ebuy.freemarker;
 
 public class Student {
 

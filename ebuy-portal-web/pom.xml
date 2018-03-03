@@ -11,7 +11,7 @@
 
     <artifactId>ebuy-portal-web</artifactId>
     <packaging>war</packaging>
-
+    <version>2.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
             <groupId>com.ebuy</groupId>
@@ -92,12 +92,12 @@
         <dependency>
             <groupId>com.ebuy</groupId>
             <artifactId>ebuy-manager-pojo</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>2.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>com.ebuy</groupId>
             <artifactId>ebuy-content-interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>2.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>

@@ -1,5 +1,5 @@
 
-package com.taotao.service.impl;
+package com.ebuy.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

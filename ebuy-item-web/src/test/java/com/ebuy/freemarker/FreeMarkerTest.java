@@ -1,4 +1,4 @@
-package com.taotao.freemarker;
+package com.ebuy.freemarker;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;

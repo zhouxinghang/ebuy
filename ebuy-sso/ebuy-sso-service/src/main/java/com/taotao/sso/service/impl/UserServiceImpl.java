@@ -1,4 +1,4 @@
-package com.taotao.sso.service.impl;
+package com.ebuy.sso.service.impl;
 
 import com.ebuy.common.pojo.EbuyResult;
 import com.ebuy.common.util.JsonUtils;

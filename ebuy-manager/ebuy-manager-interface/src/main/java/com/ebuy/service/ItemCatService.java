@@ -1,4 +1,4 @@
-package com.taotao.service;
+package com.ebuy.service;
 
 import com.ebuy.common.pojo.EasyUITreeNode;
 

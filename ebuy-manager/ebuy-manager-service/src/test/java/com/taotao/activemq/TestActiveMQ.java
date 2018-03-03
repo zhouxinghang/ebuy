@@ -1,4 +1,4 @@
-package com.taotao.activemq;
+package com.ebuy.activemq;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.junit.Test;

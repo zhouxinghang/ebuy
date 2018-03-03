@@ -1,4 +1,4 @@
-package com.taotao.pojo;
+package com.ebuy.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
