@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ebuy</groupId>
+    <artifactId>ebuy-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>2.0-SNAPSHOT</version>
+    <modules>
+        <module>ebuy-cart-web</module>
+        <module>ebuy-common</module>
+        <module>ebuy-content</module>
+        <module>ebuy-item-web</module>
+        <module>ebuy-manager-web</module>
+        <module>ebuy-order</module>
+        <module>ebuy-order-web</module>
+        <module>ebuy-portal-web</module>
+        <module>ebuy-search</module>
+        <module>ebuy-search-web</module>
+        <module>ebuy-sso</module>
+        <module>ebuy-sso-web</module>
+        <module>ebuy-manager</module>
+    </modules>
+
+
+</project>
