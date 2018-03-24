@@ -141,6 +141,7 @@ public class CookieUtils {
                 cookieValue = URLEncoder.encode(cookieValue, "utf-8");
             }
             Cookie cookie = new Cookie(cookieName, cookieValue);
+            //cookie.setDomain(".ebuy.com");
             if (cookieMaxage > 0)
                 cookie.setMaxAge(cookieMaxage);
             if (null != request) {// 设置域名的cookie
@@ -191,6 +192,10 @@ public class CookieUtils {
      * 得到cookie的域名
      */
     private static final String getDomainName(HttpServletRequest request) {
+        /**
+         * 为了解决二级域名cookie的问题，统一将cookie的域名直设置位.ebuy.com
+         */
+        /*
         String domainName = null;
 
         String serverName = request.getRequestURL().toString();
@@ -219,6 +224,8 @@ public class CookieUtils {
             domainName = ary[0];
         }
         return domainName;
+        */
+        return ".ebuy.com";
     }
 
 

@@ -27,7 +27,7 @@
         </ul>
         <div class="extra">
         <span>我已经注册，现在就&nbsp;
-        	<a href="http://localhost:8088/page/login" class="flk13">登录</a>
+        	<a href="http://sso.ebuy.com/page/login" class="flk13">登录</a>
         </span>
         </div>
     </div>
