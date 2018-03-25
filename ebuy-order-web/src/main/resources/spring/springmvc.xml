@@ -30,7 +30,7 @@
 	</mvc:interceptors>
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="ebuy-order-web"/>
-	<dubbo:registry protocol="zookeeper" address="192.168.137.12:2181"/>
+	<dubbo:registry protocol="zookeeper" address="60.205.224.98:2181"/>
 	<dubbo:reference interface="com.ebuy.sso.service.UserService" id="userService" />
 	<dubbo:reference interface="com.ebuy.order.service.OrderService" id="orderService"/>
 </beans>
