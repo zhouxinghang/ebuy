@@ -11,8 +11,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"> 
    <meta name="format-detection" content="telephone=no">
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-   <link rel="stylesheet" href="/css/base.css">
-   <link href="/css/purchase.2012.css?v=201410141639" rel="stylesheet" type="text/css">
+   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
+   <link href="${pageContext.request.contextPath}/css/purchase.2012.css?v=201410141639" rel="stylesheet" type="text/css">
    <title>我的购物车 - 易买商城</title>
    <script>
    	var pageConfig  = {};
@@ -22,7 +22,7 @@
 <jsp:include page="commons/shortcut.jsp" />
 <!--shortcut end-->
 <div class="w w1 header clearfix">
-	<div id="logo"><a href="/"><img clstag="clickcart|keycount|xincart|logo" src="/images/ebuy-logo.gif" title="返回易买商城首页" alt="返回易买商城首页"></a></div>
+	<div id="logo"><a href="${pageContext.request.contextPath}/"><img clstag="clickcart|keycount|xincart|logo" src="${pageContext.request.contextPath}/images/ebuy-logo.gif" title="返回易买商城首页" alt="返回易买商城首页"></a></div>
     <div class="language"><a href="javascript:void(0);" onclick="toEnCart()"></a></div>
 	<div class="progress clearfix">
 		<ul class="progress-1">
@@ -62,12 +62,12 @@
 		            <div class="cell p-checkbox"><input data-bind="cbid:1" class="checkbox" type="checkbox" name="checkItem" checked="" value="11345721-1"></div>
 		            <div class="cell p-goods">
 		                <div class="p-img">
-		                	<a href="/item/${cart.id }.html" target="_blank">
+		                	<a href="${pageContext.request.contextPath}/item/${cart.id }.html" target="_blank">
 		                		<img clstag="clickcart|keycount|xincart|p-imglistcart" src="${cart.image}" alt="${cart.title}" width="52" height="52">
 		                	</a>
 		                </div>    
 		                <div class="p-name">
-		                	<a href="/item/${cart.id }.html" clstag="clickcart|keycount|xincart|productnamelink" target="_blank">${cart.title}</a>
+		                	<a href="${pageContext.request.contextPath}/item/${cart.id }.html" clstag="clickcart|keycount|xincart|productnamelink" target="_blank">${cart.title}</a>
 		                	<span class="promise411 promise411_11345721" id="promise411_11345721"></span>
 		                </div>    
 		            </div>
@@ -82,7 +82,7 @@
 		                    <a href="javascript:void(0);" class="increment" clstag="clickcart|keycount|xincart|add1" id="increment">+</a>
 		                </div>
 		            </div>
-		            <div class="cell p-remove"><a id="remove-11345721-1" data-more="removed-87.20-1" clstag="clickcart|keycount|xincart|btndel318558" class="cart-remove" href="/cart/delete/${cart.id}.html">删除</a>
+		            <div class="cell p-remove"><a id="remove-11345721-1" data-more="removed-87.20-1" clstag="clickcart|keycount|xincart|btndel318558" class="cart-remove" href="${pageContext.request.contextPath}/cart/delete/${cart.id}.html">删除</a>
 		            </div>
 		        </div>
 	        </div> 
@@ -114,7 +114,7 @@
               <span class="shopping">
                   <b>
                   </b>
-                  <a href="/" target="_blank" clstag="clickcart|keycount|xincart|coudanlink" id="continue">继续购物</a>
+                  <a href="${pageContext.request.contextPath}/" target="_blank" clstag="clickcart|keycount|xincart|coudanlink" id="continue">继续购物</a>
               </span>
           </div>
           <div class="cart-total-2014">
@@ -144,13 +144,13 @@
 <!--推荐位html修改处-->
 
 
-<script type="text/javascript" src="/js/base-v1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/base-v1.js"></script>
 <!-- footer start -->
 <jsp:include page="commons/footer.jsp" />
 <!-- footer end -->
 
 <!-- 购物车相关业务 -->
-<script type="text/javascript" src="/js/cart.js"></script>
-<script type="text/javascript" src="/js/jquery.price_format.2.0.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/cart.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.price_format.2.0.min.js"></script>
 
 </html>

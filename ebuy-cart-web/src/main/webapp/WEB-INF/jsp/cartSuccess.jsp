@@ -10,8 +10,8 @@
 <meta name="format-detection" content="telephone=no">
 
 <link rel="stylesheet" type="text/css"
-	href="/css/base.css">
-<link href="/css/initcart20150123.css" type="text/css"
+	href="${pageContext.request.contextPath}/css/base.css">
+<link href="${pageContext.request.contextPath}/css/initcart20150123.css" type="text/css"
 	rel="stylesheet">
 <title>商品已成功加入购物车</title>
 <style id="style-1-cropbar-clipper">
@@ -48,7 +48,7 @@
 						<span id="flashBuy" style="display: none">商品数量有限，请您尽快下单并付款！</span>
 					</div>
 					<span id="initCart_next_go"> <a class="btn-1"
-						href="/cart/cart.html"
+						href="${pageContext.request.contextPath}/cart/cart.html"
 						id="GotoShoppingCart">去购物车结算</a> <span class="ml10">您还可以 <a
 							class="ftx-05" href="javascript:history.back();">继续购物</a></span>
 					</span>

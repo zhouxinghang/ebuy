@@ -311,9 +311,9 @@ var noItemOver = {
                     return false;
                 }
                 for ( var i = 0; i < data.length; i++ ) {
-                    resHTML.push( listBrosweBroswe_TPL.process(data[i]).replace('[#]', i) );
+                    resHTML.push( listBrosweBroswe_TPL.process(data[i]).replace('[#]', i));
                     pageConfig.product.listBrosweBroswe.push(data[i].wid);
-                }
+                })
                 $('#itemover1-related-list').show();
                 $('#itemover1-related-list .itemover1-related-list').html( '<a href="javascript:;" class="spec-control disabled" id="itemover1-forward"></a><a href="javascript:;" class="spec-control disabled" id="itemover1-backward"></a><div id="itemover1-list"><ul>' + resHTML.join('') + '</ul></div>' );
 
@@ -841,14 +841,14 @@ function chooseType() {
         amount = $('#choose-amount'),
         buyLink = $('#choose-btn-append .btn-append'),
         selectItem = $('#choose-type .selected').eq(0); 
-    if ( !selectItem.attr('data') ) {
+    if ( !selectItem.attr('data') {
         return false;
     }       
     if ( shoppingselect.length > 0 ) {
         amount.hide();
     }
     shoppingselect.bind('click', function (i) {
-        if ( $('#choose-btn-append').hasClass('disabled') ) {
+        if ( $('#choose-btn-append').hasClass('disabled') {
             return false;
         }
         var data = $(this).attr('data').split('|'),
@@ -867,7 +867,7 @@ function chooseType() {
     }
     if ( shoppingselect.length == 1 && selectItem.length < 1 ) {
         shoppingselect.addClass('selected');
-        buyLink.attr( 'href', shoppingselect.attr('data').split('|')[1].replace(/wid=\d{6,}/, 'wid=' + pageConfig.product.skuid ) );
+        buyLink.attr( 'href', shoppingselect.attr('data').split('|')[1].replace(/wid=\d{6,}/, 'wid=' + pageConfig.product.skuid );
     }
 }
 var choose_btn_gift = null;

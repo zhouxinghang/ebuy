@@ -7,15 +7,15 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache,must-revalidate">
     <title>注册-个人用户</title>
-    <link type="text/css" rel="stylesheet" href="/css/regist.personal.css"/>
-    <link type="text/css" rel="stylesheet" href="/css/passport.base.css"/>
-    <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/regist.personal.css"/>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/passport.base.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.4.js"></script>
 </head>
 <body>
 <div class="w" id="logo">
     <div>
     	<a href="http://localhost:8082">
-    		<img src="/images/ebuy-logo.gif" alt="易买商城" width="170" height="60"/>
+    		<img src="${pageContext.request.contextPath}/images/ebuy-logo.gif" alt="易买商城" width="170" height="60"/>
     	</a> <b></b>
     </div>
 </div>
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="phone">
-                <img width="180" height="180" src="/images/phone-bg.jpg">
+                <img width="180" height="180" src="${pageContext.request.contextPath}/images/phone-bg.jpg">
             </div>
             <span class="clr"></span>
         </form>

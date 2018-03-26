@@ -9,6 +9,8 @@
 
 ### nginx 在windows F:\workspace下
     nginx -c nginx.conf 带配置文件启动
+    
+### 通过两个tomcat。一个是服务提供者，一个是服务消费者，用路径来区分每个服务。
 
 ## bug纪录
 
@@ -49,6 +51,14 @@ cookie.setDomain(".ebuy.com");
 
 ### 4.启动虚拟机报内部错误
 很有可能是VM服务没有启动（可能是没有设置为开机自启或认为关闭），你可以进入 “服务”将VMAuthdService、VMnetDHCP、VMware NAT Service、VMwareHostd（VMware Workstation Server）、VMUSBArbService 这5个服务启动即可。
+
+### 5.部署项目的时候，要将原来的war包删除
+
+### 6.部署项目到线上，用路径区分每个服务。这样会出现路径的错误
+    /images/blank.gif 改为
+    /images/blank.gif
+### 
+    https://blog.csdn.net/li396864285/article/details/54574955
 
 ## 服务端口
     

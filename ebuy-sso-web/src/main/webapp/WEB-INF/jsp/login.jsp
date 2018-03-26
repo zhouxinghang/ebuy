@@ -5,14 +5,14 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312"/>
     <title>登录易买</title>
-    <link type="text/css" rel="stylesheet" href="/css/login.css"/>
-    <script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css"/>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.4.js"></script>
 </head>
 <body>
 <div class="w">
     <div id="logo">
     	<a href="http://localhost:8082" clstag="passport|keycount|login|01">
-    		<img src="/images/ebuy-logo.gif" alt="易买" width="170" height="60"/>
+    		<img src="${pageContext.request.contextPath}/images/ebuy-logo.gif" alt="易买" width="170" height="60"/>
     	</a><b></b>
    	</div>
 </div>
@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="free-regist">
-            <span><a href="/page/register" clstag="passport|keycount|login|08">免费注册&gt;&gt;</a></span>
+            <span><a href="${pageContext.request.contextPath}/page/register" clstag="passport|keycount|login|08">免费注册&gt;&gt;</a></span>
         </div>
     </div>
 </form>

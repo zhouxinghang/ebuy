@@ -14,18 +14,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>订单结算页 -易买商城</title>
 	<!--结算页面样式-->	
-	<link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
-    <link type="text/css" rel="stylesheet"  href="/css/order-commons.css" source="widget"/>	
-	<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
-	<script type="text/javascript" src="/js/base.js"></script>	
-	<script type="text/javascript" src="/js/order.common.js"></script>
-	<script type="text/javascript" src="/js/jquery.checkout.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/base.css" media="all" />
+    <link type="text/css" rel="stylesheet"  href="${pageContext.request.contextPath}/css/order-commons.css" source="widget"/>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.4.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/base.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/order.common.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.checkout.js"></script>
 </head>	<body id="mainframe">
 <jsp:include page="commons/shortcut.jsp" />
 <!--shortcut end-->
 
 <div class="w w1 header clearfix">
-    <div id="logo"><a href="/"><img src="/images/ebuy-logo.gif" alt="易买商城"></a></div>
+    <div id="logo"><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/images/ebuy-logo.gif" alt="易买商城"></a></div>
 </div>
 
 <form id="orderForm" class="hide" action="/order/create.html" method="post">
@@ -172,7 +172,7 @@
 <div class="step-tit">
 	<h3>送货清单</h3>
 	<div class="extra-r">
-					<a href="/cart/show.html" id="cartRetureUrl" class="return-edit ftx-05">返回修改购物车</a>
+					<a href="${pageContext.request.contextPath}/cart/show.html" id="cartRetureUrl" class="return-edit ftx-05">返回修改购物车</a>
 			</div>
 </div>
 <div class="step-cont" id="skuPayAndShipment-cont">
@@ -187,13 +187,13 @@
 		<div class="goods-item goods-item-extra">
 
 			<div class="p-img">
-				<a target="_blank" href="/item/${cart.id}.html">
+				<a target="_blank" href="${pageContext.request.contextPath}/item/${cart.id}.html">
 					<img src="${cart.image}" alt="">
 				</a>
 			</div>
 			<div class="goods-msg">
 				<div class="p-name">
-					<a href="/item/${cart.id}.html" target="_blank">
+					<a href="${pageContext.request.contextPath}/item/${cart.id}.html" target="_blank">
 						${cart.title } 
 					</a>
 				</div>

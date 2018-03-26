@@ -4,8 +4,8 @@
 	<title>${item.title } - 易买</title>
 	<script>var jdpts = new Object(); jdpts._st = new Date().getTime();</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<link rel="stylesheet" type="text/css" href="/css/ebuy.css" media="all" />
-	<link rel="stylesheet" type="text/css" href="/css/pshow.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ebuy.css" media="all" />
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/pshow.css" media="all" />
 	<script type="text/javascript">
     	window.pageConfig = {
 			compatible: true,
@@ -131,7 +131,7 @@
 		        <li id="choose-result"><div class="dt"></div><div class="dd"></div></li>
 				<li id="choose-btns">
 					<div id="choose-btn-append"  class="btn">
-							<a class="btn-append " id="InitCartUrl" href="/cart/add/${item.id}.html" clstag="shangpin|keycount|product|initcarturl">加入购物车<b></b></a>
+							<a class="btn-append " id="InitCartUrl" href="${pageContext.request.contextPath}/cart/add/${item.id}.html" clstag="shangpin|keycount|product|initcarturl">加入购物车<b></b></a>
 					</div>
 					<div id="choose-btn-easybuy" class="btn"></div>
 					<div id="choose-btn-divide" class="btn"></div>
@@ -247,10 +247,10 @@
 <!-- footer start -->
 <#include "commons/footer.ftl" />
 <!-- footer end -->
-<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
-<script type="text/javascript" src="/js/lib-v1.js"></script>
-<script type="text/javascript" src="/js/product.js"></script>
-<script type="text/javascript" src="/js/iplocation_server.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/lib-v1.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/product.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/iplocation_server.js"></script>
 <script type="text/javascript">
 	var itemControl = {
 			param:{

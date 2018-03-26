@@ -16,18 +16,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>出错了 -易买商城</title>
 <!--结算页面样式-->
-<link rel="stylesheet" type="text/css" href="/css/base.css" media="all" />
-<link type="text/css" rel="stylesheet" href="/css/order-commons.css"
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/base.css" media="all" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/order-commons.css"
 	source="widget" />
-<script type="text/javascript" src="/js/jquery-1.6.4.js"></script>
-<script type="text/javascript" src="/js/base.js"></script>
-<script type="text/javascript" src="/js/order.common.js"></script>
-<script type="text/javascript" src="/js/jquery.checkout.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.6.4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/base.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/order.common.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.checkout.js"></script>
 </head>
 <body id="mainframe">
 	<div class="w w1 header clearfix">
 		<div id="logo">
-			<a href="/"><img src="/images/ebuy-logo.gif" alt="易买商城"></a>
+			<a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/images/ebuy-logo.gif" alt="易买商城"></a>
 		</div>
 	</div>
 
@@ -101,7 +101,7 @@
 			<ul class="m">
 				<li class="fore1">您可以：稍后再试或联系客服400-8888-9999。
 				</li>
-				<li class="fore2">返回<a href="/" target="_blank">易买首页</a></li>
+				<li class="fore2">返回<a href="${pageContext.request.contextPath}/" target="_blank">易买首页</a></li>
 				<li class="fore3">错误消息</li>
  				<li class="fore4">${message }</li>
 			</ul>
