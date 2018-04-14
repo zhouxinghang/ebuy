@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by admin on 2017/12/23.
+ * 商品控制类
  */
 
 @Controller

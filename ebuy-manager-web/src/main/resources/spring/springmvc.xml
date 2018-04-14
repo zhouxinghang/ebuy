@@ -23,7 +23,7 @@
     <mvc:resources location="/js/" mapping="/js/**"/>
     <!-- 引用dubbo服务 -->
     <dubbo:application name="ebuy-manager-web"/>
-    <dubbo:registry protocol="zookeeper" address="60.205.224.98:2181"/>
+    <dubbo:registry protocol="zookeeper" address="localhost:2181"/>
     <dubbo:reference interface="com.ebuy.service.ItemService" id="itemService" />
     <dubbo:reference interface="com.ebuy.service.ItemCatService" id="itemCatService" />
     <dubbo:reference interface="com.ebuy.content.service.ContentService" id="contentService" />

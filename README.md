@@ -1,3 +1,5 @@
+## 工程说明
+
 ### solr服务在  D:\download\apache-tomcat-7.0.78  tomcat服务器中
 
 ### activemq，zookeeper,redis，ftp在centos7中，windows虚拟机中 
@@ -13,6 +15,7 @@
 ### 通过两个tomcat。一个是服务提供者，一个是服务消费者，用路径来区分每个服务。
 
 ### solr放在了单独的tomcat中，solr很容易出问题，且不知道问题出在何处，待后续解决
+    mac的workspace/myworkspace/tomcat7下面，端口号8888
 
 ### 本想把Producter和Consumer独立开来（这样先启动Producter，后启动Consumer），但是会出错。很奇怪
 
@@ -77,6 +80,7 @@ cookie.setDomain(".ebuy.com");
     
     3、2888：集群内机器通讯使用（Leader监听此端口）
     zkServer.sh {start|stop|status|restart}
+    zkServer start 
      
 ### 2.activemq
     1、8161：管理控制台
@@ -88,3 +92,13 @@ cookie.setDomain(".ebuy.com");
     redis-server
     redis-cli shutdown  
     
+    
+### 4.nginx
+    sudo nginx
+    sudo ngixn -s reload
+    
+    
+## 进度
+
+###  manager管理模块商品规格参数管理开发 doing
+    tb_item_param ，tb_item_param_item

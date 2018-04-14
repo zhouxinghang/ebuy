@@ -26,6 +26,6 @@
 
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="ebuy-search-web"/>
-	<dubbo:registry protocol="zookeeper" address="60.205.224.98:2181"/>
+	<dubbo:registry protocol="zookeeper" address="localhost:2181"/>
 	<dubbo:reference interface="com.ebuy.search.service.SearchService" id="searchService" />
 </beans>      

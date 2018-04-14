@@ -13,6 +13,8 @@ import java.util.List;
 
 /**
  * Created by admin on 2017/12/24.
+ * 商品类型控制类
+ * item category
  */
 
 @Controller
