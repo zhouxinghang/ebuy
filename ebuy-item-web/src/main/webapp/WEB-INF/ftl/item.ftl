@@ -126,7 +126,7 @@
 								<a class="btn-add" href="javascript:;" onclick="setAmount.add('#buy-num')">增加数量</a>
 								<input class="text" id="buy-num" value="1" onkeyup="setAmount.modify('#buy-num');"/>
 						</div>
-					</div>
+					</div>item-edit
 				</li>
 		        <li id="choose-result"><div class="dt"></div><div class="dd"></div></li>
 				<li id="choose-btns">

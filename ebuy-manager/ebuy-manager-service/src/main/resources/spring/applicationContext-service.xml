@@ -23,4 +23,5 @@
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.ebuy.service.ItemService" ref="itemServiceImpl" timeout="300000"/>
 	<dubbo:service interface="com.ebuy.service.ItemCatService" ref="itemCatServiceImpl" timeout="300000"/>
+	<dubbo:service interface="com.ebuy.service.PicService" ref="picServiceImpl" timeout="300000"/>
 </beans>
