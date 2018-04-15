@@ -3,8 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:wb=“http://open.weibo.com/wb”>
 <head>
+	<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
 	<title>${item.title } - 易买</title>
 	<script>var jdpts = new Object(); jdpts._st = new Date().getTime();</script>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -174,22 +176,23 @@
 			<div id="short-share">
 				<div id="view-bigimg" class="fl"><b></b><a href="http://www.jd.com/bigimage.aspx?id=1221882" target="_blank">查看大图</a></div>
 				<div id="share-list" class="share-list" clstag="shangpin|keycount|product|share">
-	<div class="share-bd">
-		<em class="share-hd">分享到：</em>
-		<ul class="share-list-item clearfix">
-			<li><a href="javascript:;" id="site-sina" title="分享到新浪微博">新浪微博</a></li>
-			<li><a href="javascript:;" id="site-qq" title="分享到给QQ好友">QQ</a></li>
-			<li><a href="javascript:;" id="site-qzone" title="分享到腾讯微博">腾讯微博</a></li>
-			<li><a href="javascript:;" id="site-renren" title="分享到人人网">人人网</a></li>
-			<li><a href="javascript:;" id="site-kaixing" title="分享到开心网">开心网</a></li>
-			<li><a href="javascript:;" id="site-douban" title="分享到豆瓣">豆瓣</a></li>
-			<li><a href="javascript:;" id="site-msn" title="分享给MSN好友">MSN</a></li>
-			<li><a href="javascript:;" id="site-email" title="邮件分享给好友">邮件</a></li>
-		</ul>
-	</div>
-	<div class="share-ft"><b></b></div>
-</div>
-<div class="clb"></div>				
+					<div class="share-bd">
+						<em class="share-hd">分享到：</em>
+						<ul class="share-list-item clearfix">
+							<li><wb:share-button appkey="3278659167" addition="simple" type="icon" default_text="ebuy商城，以严谨的态度,为中国消费者甄选天下优品。" ralateUid="5784324363"></wb:share-button></li>
+							<%--<li><a href="javascript:;" id="site-sina" title="分享到新浪微博">新浪微博</a></li>--%>
+							<li><a href="javascript:;" id="site-qq" title="分享到给QQ好友">QQ</a></li>
+							<li><a href="javascript:;" id="site-qzone" title="分享到腾讯微博">腾讯微博</a></li>
+							<li><a href="javascript:;" id="site-renren" title="分享到人人网">人人网</a></li>
+							<li><a href="javascript:;" id="site-kaixing" title="分享到开心网">开心网</a></li>
+							<li><a href="javascript:;" id="site-douban" title="分享到豆瓣">豆瓣</a></li>
+							<li><a href="javascript:;" id="site-msn" title="分享给MSN好友">MSN</a></li>
+							<li><a href="javascript:;" id="site-email" title="邮件分享给好友">邮件</a></li>
+						</ul>
+					</div>
+					<div class="share-ft"><b></b></div>
+				</div>
+				<div class="clb"></div>
 			</div>
 		</div><!--preview end-->
 	</div><!--product-intro end-->
@@ -304,7 +307,7 @@
 		//加入购物车之前，先取商品数量
 		var num = $("#buy-num").val();
 		//拼装url参数，做跳转
-		location.href="http://localhost:8089/cart/add/${item.id}.html?num=" + num;
+		location.href="http://cart.ebuy.com/add/${item.id}.html?num=" + num;
 	}
 </script>
 </body>
