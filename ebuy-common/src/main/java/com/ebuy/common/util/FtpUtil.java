@@ -1,5 +1,6 @@
 package com.ebuy.common.util;
 
+
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
@@ -39,15 +40,22 @@ public class FtpUtil {
             int reply;
             ftp.connect(host, port);// 连接FTP服务器
             // 如果采用默认端口，可以使用ftp.connect(host)的方式直接连接FTP服务器
+            System.out.println("连接成功");
             ftp.login(username, password);// 登录
+            System.out.println("登录成功");
             reply = ftp.getReplyCode();
             if (!FTPReply.isPositiveCompletion(reply)) {
                 ftp.disconnect();
                 return result;
             }
+            FTPFile[] ftpFiles = ftp.listFiles();
+            for(FTPFile ftpFile : ftpFiles) {
+                System.out.println(ftpFile.getName());
+            }
             // 切换到上传目录
             if (!ftp.changeWorkingDirectory(basePath + filePath)) {
                 // 如果目录不存在创建目录
+                System.out.println("目录不存在");
                 String[] dirs = filePath.split("/");
                 String tempPath = basePath;
                 for (String dir : dirs) {
@@ -146,8 +154,11 @@ public class FtpUtil {
     }
 
     public static void main(String[] args) throws FileNotFoundException {
-        boolean result = FtpUtil.uploadFile("10.2.203.164", 21, "ftpuser", "123456", "/home/ftpuser", "/", "d.png",
-                new FileInputStream("/Users/renren/Documents/QQ20170622-1.jpg"));
+        /**
+         * ftpuser用户只有/data/ftp目录的权限，这个就是他的根目录，pub目录有写的权限，
+         */
+        boolean result = FtpUtil.uploadFile("39.106.166.146", 21, "ftpuser", "123456", "/pub", "/image", "d.png",
+                new FileInputStream("/Users/zhouxinghang/Desktop/屏幕快照 2018-04-14 12.02.33.png"));
         if (result)
             System.out.println("上传成功");
         else
