@@ -1,6 +1,8 @@
 package com.ebuy.service;
 
 import com.ebuy.common.pojo.EasyUITreeNode;
+import com.ebuy.pojo.TbItem;
+import com.ebuy.pojo.TbItemCat;
 
 import java.util.List;
 
@@ -9,4 +11,6 @@ import java.util.List;
  */
 public interface ItemCatService {
     List<EasyUITreeNode> getItemCatList(long parentId);
+
+    TbItemCat getItemCat(long cid);
 }

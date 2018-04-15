@@ -41,4 +41,16 @@ public class ItemCatServiceImpl implements ItemCatService {
 
         return treeNodes;
     }
+
+    public TbItemCat getItemCat(long cid) {
+        TbItemCatQuery tbItemCatQuery = new TbItemCatQuery();
+        //设置查询条件
+        TbItemCatQuery.Criteria criteria = tbItemCatQuery.createCriteria();
+        criteria.andIdEqualTo(cid);
+        List<TbItemCat> itemCats = tbItemCatDao.selectByExample(tbItemCatQuery);
+        if(itemCats != null && itemCats.size() > 0) {
+            return  itemCats.get(0);
+        }
+        return new TbItemCat();
+    }
 }

@@ -237,10 +237,12 @@ java.lang.NullPointerException
     利用nginx+vsftpd搭建图片服务器
     
 ### 商品详情页，商品类目开发
-    
+    新增商品的类目（不包含父类目）
     
 ### 商品详情页，新增微博分享功能 done
     item.jsp页面，引入微博的js，添加自己的appkey
     
-    
-### 登录注册页面优化
+     
+### 登录注册页面优化 todo
+
+### 商品详情评价功能 todo

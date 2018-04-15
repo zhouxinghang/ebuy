@@ -24,8 +24,8 @@ public class ItemController {
     private static final Logger LOG = LoggerFactory.getLogger(ItemController.class);
     @Autowired
     private ItemService itemService;
-//    @Autowired
-//    private ItemCatService itemCatService;
+    @Autowired
+    private ItemCatService itemCatService;
 
     @GetMapping("/item/{itemId}")
     public String showItem(@PathVariable Long itemId, Model model) {
@@ -34,8 +34,9 @@ public class ItemController {
         Item item = new Item(tbItem);
         //取商品描述
         TbItemDesc tbItemDesc = itemService.getItemDescById(itemId);
-        //取商品类目 TODO
-        //TbItemCat tbItemCat = itemCatService.getItemCatList(item.getCid());
+        //取商品类目
+        TbItemCat tbItemCat = itemCatService.getItemCat(item.getCid());
+        item.setCatName(tbItemCat.getName());
         //把数据传递给页面
         model.addAttribute("item", item);
         model.addAttribute("itemDesc", tbItemDesc);

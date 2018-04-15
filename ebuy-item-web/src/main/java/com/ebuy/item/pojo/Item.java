@@ -10,6 +10,8 @@ import java.text.SimpleDateFormat;
 public class Item extends TbItem {
     private String date;
 
+    private String catName;
+
     public Item(TbItem tbItem) {
         //初始化属性
         this.setId(tbItem.getId());
@@ -42,4 +44,13 @@ public class Item extends TbItem {
     public void setDate(String date) {
         this.date = date;
     }
+
+    public String getCatName() {
+        return catName;
+    }
+
+    public void setCatName(String catName) {
+        this.catName = catName;
+    }
+
 }
