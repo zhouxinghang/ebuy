@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -39,6 +42,7 @@ public class CartController {
         //TODO  cookie和redis同时使用
         //取购物车商品列表
         List<TbItem> cartItemList = getCartItemList(request);
+        Date date = new Date();
         //判断购物车是否存在该商品
         boolean flag = false;
         for(TbItem item : cartItemList) {

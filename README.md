@@ -21,7 +21,15 @@
 
 ### 利用路径来区分每个服务，真的特别麻烦，涉及到的一系列路径都需要修改。
 
-
+### 使用的是视图解析器拦截.jsp请求，没有使用ftl模板
+```xml
+<!-- 视图解析器 -->
+<bean
+    class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/jsp/" />
+    <property name="suffix" value=".jsp" />
+</bean>
+```    
 
 ## bug纪录
 
@@ -72,6 +80,15 @@ cookie.setDomain(".ebuy.com");
     https://blog.csdn.net/li396864285/article/details/54574955
     
 ### 新增商品没有同步到索引库
+    activemq是正常的，消息监听者能正常运行，报空指针
+    
+```java
+    2018-04-15 12:00:15ItemMessageListener.onMessage.itemAddTopic.new item : 152376481467081
+    2018-04-15 12:00:16Execution of JMS message listener failed, and no ErrorHandler has been set.
+    java.lang.NullPointerException
+    	at com.ebuy.search.listener.ItemAddMessageListener.onMessage(ItemAddMessageListener.java:43)
+    	at org.springframework.jms.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:746)
+```
 
 ### 图片服务器部署异常
     阿里云安全组未部署
@@ -163,7 +180,17 @@ java.lang.NullPointerException
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
 	at java.lang.Thread.run(Thread.java:748)
 ```
-由于InputStream不能被序列化导致的异常，会引起服务NullpointerException
+- 原因
+    由于InputStream不能被序列化导致的异常，会引起服务NullpointerException
+- 解决
+    1.封装InputStream，实现序列化。不能解决
+    2.改为字节数组上传，可以
+
+### cart.ebuy.com 会跳转到ww25.cart.ebuy.com   ip就不会这样
+
+-原因  
+    cart.ebuy.com是一个本来存在的域名，且本机/etc/hosts没有加入cart 
+
 
 
 ## 服务端口
@@ -178,7 +205,7 @@ java.lang.NullPointerException
     zkServer start 
      
 ### 2.activemq
-    1、8161：管理控制台
+    1、8161：管理控制台   user：admin  passwd：admin
     2、61616：消息通讯
     启动：activemq start
     
@@ -201,11 +228,19 @@ java.lang.NullPointerException
 ### 商品详情页 左侧小广告
     ```
     <div class="left">
-    		<div id="miaozhen7886" class="m"><a href="http://c.nfa.jd.com/adclick?sid=2&amp;cid=163&amp;aid=817&amp;bid=7853&amp;unit=69570&amp;advid=156740&amp;guv=&amp;url=http://sale.jd.com/act/IFkpQYSVnG1Jet.html" target="_blank"><img data-img="2" width="211" height="261" src="http://image.ebuy.com/images/2014/10/23/2014102305423212301343.jpg" class="loading-style2"></a></div>
-    		<div id="miaozhen7886" class="m"><a href="http://c.nfa.jd.com/adclick?sid=2&amp;cid=163&amp;aid=817&amp;bid=7853&amp;unit=69570&amp;advid=156740&amp;guv=&amp;url=http://sale.jd.com/act/IFkpQYSVnG1Jet.html" target="_blank"><img data-img="2" width="211" height="261" src="http://image.ebuy.com/images/2014/10/23/2014102305423212301343.jpg" class="loading-style2"></a></div>
+    		<div id="miaozhen7886" class="m"><a href="http://c.nfa.jd.com/adclick?sid=2&amp;cid=163&amp;aid=817&amp;bid=7853&amp;unit=69570&amp;advid=156740&amp;guv=&amp;url=http://sale.jd.com/act/IFkpQYSVnG1Jet.html" target="_blank"><img data-img="2" width="211" height="261" src="http://image.zhouxinghang.com/hope.jpg" class="loading-style2"></a></div>
+    		<div id="miaozhen7886" class="m"><a href="http://c.nfa.jd.com/adclick?sid=2&amp;cid=163&amp;aid=817&amp;bid=7853&amp;unit=69570&amp;advid=156740&amp;guv=&amp;url=http://sale.jd.com/act/IFkpQYSVnG1Jet.html" target="_blank"><img data-img="2" width="211" height="261" src="http://image.zhouxinghang.com/hope.jpg" class="loading-style2"></a></div>
     </div><!--left end-->
     ```
     
 ### 图片服务器开发 done
     利用nginx+vsftpd搭建图片服务器
     
+### 商品详情页，商品类目开发
+    
+    
+### 商品详情页，新增微博分享功能 done
+    item.jsp页面，引入微博的js，添加自己的appkey
+    
+    
+### 登录注册页面优化

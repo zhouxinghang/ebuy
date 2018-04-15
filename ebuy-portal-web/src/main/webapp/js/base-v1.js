@@ -5,7 +5,7 @@ function login() {
     return location.href = "http://sso.ebuy.com/page/login";
 }
 function regist() {
-    return location.href = "http://localhost:8088/page/register";
+    return location.href = "http://sso.ebuy.com/page/register";
 }
 function createCookie(a, b, c, d) {
     var d = d ? d : "/";

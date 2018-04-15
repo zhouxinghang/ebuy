@@ -19,7 +19,7 @@ public class SearchServiceImpl implements SearchService {
 
     @Override
     public SearchResult search(String queryString, int page, int rows) throws Exception {
-//根据查询条件拼装查询对象
+        //根据查询条件拼装查询对象
         //创建一个SolrQuery对象
         SolrQuery query = new SolrQuery();
         //设置查询条件

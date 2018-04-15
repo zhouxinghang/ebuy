@@ -2,10 +2,13 @@ package com.ebuy.item.pojo;
 
 import com.ebuy.pojo.TbItem;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by admin on 2017/12/29.
  */
 public class Item extends TbItem {
+    private String date;
 
     public Item(TbItem tbItem) {
         //初始化属性
@@ -20,6 +23,7 @@ public class Item extends TbItem {
         this.setStatus(tbItem.getStatus());
         this.setCreated(tbItem.getCreated());
         this.setUpdated(tbItem.getUpdated());
+        this.setDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(this.getCreated()));
     }
 
     public String[] getImages() {
@@ -29,5 +33,13 @@ public class Item extends TbItem {
             return strings;
         }
         return null;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

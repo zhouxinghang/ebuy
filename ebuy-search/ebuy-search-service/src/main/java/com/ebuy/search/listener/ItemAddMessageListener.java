@@ -37,6 +37,7 @@ public class ItemAddMessageListener implements MessageListener {
             //等待事务提交
             Thread.sleep(1000);
             SearchItem searchItem = searchItemMapper.getItemById(itemId);
+            logger.info("ItemMessageListener.onMessage.itemAddTopic.searchItem: {}", searchItem.toString());
             //创建文档对象
             SolrInputDocument document = new SolrInputDocument();
             //想文档对象中添加域
