@@ -12,6 +12,8 @@ import com.ebuy.content.service.ContentService;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.annotations.ApiOperation;
+
 /**
  * Created by admin on 2017/12/24.
  */
@@ -33,6 +35,7 @@ public class IndexController {
     @Autowired
     private ContentService contentService;
 
+    @ApiOperation(value = "商城首页", notes = "")
     @GetMapping("/index")
     public String showIdnex(Model model) {
         //根据cid查询轮播图内容列表
