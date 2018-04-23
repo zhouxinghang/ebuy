@@ -246,3 +246,5 @@ java.lang.NullPointerException
 ### 登录注册页面优化 todo
 
 ### 商品详情评价功能 todo
+
+### 添加mycat数据库中间件  todo
