@@ -51,6 +51,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="item" id="select-regEmail">
+                    <span class="label"><b class="ftx04">*</b>邮箱：</span>
+
+                    <div class="fl item-ifo">
+                        <div class="o-intelligent-regName">
+                            <input type="text" id="regEmail" name="email" class="text" tabindex="1" autoComplete="off"
+                                   onpaste="return false;"
+                                   value=""
+                                   onfocus="if(this.value=='') this.value='';this.style.color='#333'"
+                                   onblur="if(this.value=='') {this.value='';this.style.color='#999999'}"/>
+                            <i class="i-name"></i>
+                            <ul id="intelligent-regEmail" class="hide"></ul>
+                            <label id="regEmail_succeed" class="blank"></label>
+                            <label id="regEmail_error" class="hide"></label>
+                        </div>
+                    </div>
+                </div>
                 <div id="o-password">
                     <div class="item">
                         <span class="label"><b class="ftx04">*</b>请设置密码：</span>
@@ -136,6 +153,11 @@
 					$("#phone").focus();
 					return false;
 				}
+            if ($("#regEmail").val() == "") {
+                alert("邮箱不能为空");
+                $("#regEmail").focus();
+                return false;
+            }
 				//密码检查
 				if ($("#pwd").val() != $("#pwdRepeat").val()) {
 					alert("确认密码和密码不一致，请重新输入！");
@@ -151,15 +173,27 @@
 	            	url : REGISTER.param.surl + "/user/check/"+escape($("#regName").val())+"/1?r=" + Math.random(),
 	            	success : function(data) {
 	            		if (data.data) {
-	            			//检查手机号是否存在
+	            			//检查邮箱是否存在
 	            			$.ajax({
-	            				url : REGISTER.param.surl + "/user/check/"+$("#phone").val()+"/2?r=" + Math.random(),
+	            				url : REGISTER.param.surl + "/user/check/"+$("#regEmail").val()+"/3?r=" + Math.random(),
 				            	success : function(data) {
 				            		if (data.data) {
-					            		REGISTER.doSubmit();
+				            		    //检查手机号是否存在
+                                        $.ajax({
+                                            url:REGISTER.param.surl + "/user/check/"+$("#phone").val()+"/2?r=" + Math.random(),
+                                            success : function (data) {
+                                                if(data.data) {
+                                                    REGISTER.doSubmit();
+                                                } else {
+                                                    alert("此手机号已被注册！");
+                                                    $("#phone").select();
+                                                }
+                                            }
+                                        });
+
 				            		} else {
-				            			alert("此手机号已经被注册！");
-				            			$("#phone").select();
+				            			alert("此邮箱已经被注册！");
+				            			$("#regEmail").select();
 				            		}
 				            	}
 	            			});
@@ -174,7 +208,7 @@
 		doSubmit:function() {
 			$.post("/user/register",$("#personRegForm").serialize(), function(data){
 				if(data.status == 200){
-					alert('用户注册成功，请登录！');
+					alert('注册成功, 请您到您的邮箱中点击激活链接来激活您的帐号');
 					REGISTER.login();
 				} else {
 					alert("注册失败！");

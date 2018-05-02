@@ -192,6 +192,9 @@ java.lang.NullPointerException
 
 -原因  
     cart.ebuy.com是一个本来存在的域名，且本机/etc/hosts没有加入cart 
+    
+### sso.ebu.com/ 报404 
+    需要设置首页http://sso.ebuy.com/page/login
 
 
 
@@ -250,3 +253,6 @@ java.lang.NullPointerException
 ### 商品详情评价功能 todo
 
 ### 添加mycat数据库中间件  todo
+
+
+### 实现邮箱注册，添加验证码

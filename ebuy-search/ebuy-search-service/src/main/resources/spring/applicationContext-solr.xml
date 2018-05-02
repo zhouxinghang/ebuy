@@ -12,5 +12,8 @@
 	<bean id="httpSolrServer" class="org.apache.solr.client.solrj.impl.HttpSolrServer">
 		<constructor-arg name="baseURL" value="http://localhost:8888/solr/collection1"/>
 	</bean>
-	
+	<!--<bean id="testBean" class="com.ebuy.search.TestBean" factory-method="getTestBean2"></bean>-->
+
+	<bean id = "testBeanFactory" class="com.ebuy.search.TestBeanFactory"></bean>
+	<bean id = "testBean2" factory-bean="testBeanFactory" factory-method="getTestBean"></bean>
 </beans>

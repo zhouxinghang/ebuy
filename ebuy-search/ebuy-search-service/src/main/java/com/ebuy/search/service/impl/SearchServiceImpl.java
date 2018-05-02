@@ -4,7 +4,9 @@ import com.ebuy.common.pojo.SearchResult;
 import com.ebuy.search.dao.SearchDao;
 import com.ebuy.search.service.SearchService;
 import org.apache.solr.client.solrj.SolrQuery;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.stereotype.Service;
 
 /**

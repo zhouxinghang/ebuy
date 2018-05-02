@@ -70,7 +70,7 @@
   </sql>
   <sql id="Base_Column_List" >
     <if test="fields == null" >
-      id, username, password, phone, email, created, updated
+      id, username, password, phone, email, created, updated, status
     </if>
     <if test="fields != null" >
       ${fields}

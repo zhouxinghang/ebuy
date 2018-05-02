@@ -30,6 +30,8 @@ public class TbUser implements Serializable {
 
     private Date updated;
 
+    private int status; //0 未激活， -1 已删除， 1 已激活
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -86,6 +88,14 @@ public class TbUser implements Serializable {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     @Override

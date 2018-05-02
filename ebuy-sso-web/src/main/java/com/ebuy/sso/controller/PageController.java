@@ -14,6 +14,7 @@ public class PageController {
     public String showRegister() {
         return "register";
     }
+
     @RequestMapping("/page/login")
     public String showLogin(String url, Model model) {
         model.addAttribute("redirect", url);//设置回调url，为空就回调到portal-web首页

@@ -1,12 +1,20 @@
 package com.ebuy.sso.service.impl;
 
 import com.ebuy.common.pojo.EbuyResult;
+import com.ebuy.common.util.IDUtils;
 import com.ebuy.common.util.JsonUtils;
 import com.ebuy.dao.TbUserDao;
+import com.ebuy.dao.TbUserRegDao;
+import com.ebuy.enums.UserStatus;
 import com.ebuy.jedis.JedisClient;
 import com.ebuy.pojo.TbUser;
 import com.ebuy.pojo.TbUserQuery;
+import com.ebuy.pojo.TbUserReg;
 import com.ebuy.sso.service.UserService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -14,6 +22,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.StringUtils;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -24,14 +33,20 @@ import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
+    private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
     @Autowired
     private TbUserDao tbUserDao;
     @Autowired
+    private TbUserRegDao tbUserRegDao;
+    @Autowired
     private JedisClient jedisClient;
+    @Autowired
+    private AmqpTemplate amqpTemplate;
     @Value("${USER_SESSION}")
     private String USER_SESSION;
     @Value("${SESSION_EXPIRE}")
     private Integer SESSION_EXPIRE;
+    private static final String EBUY_REG_QUEUE = "queue.ebuy.reg";
     @Override
     public EbuyResult checkData(String data, int type) {
         TbUserQuery tbUserQuery = new TbUserQuery();
@@ -81,6 +96,15 @@ public class UserServiceImpl implements UserService {
         if(!DigestUtils.md5DigestAsHex(password.getBytes()).equals(user.getPassword())) {
             return EbuyResult.build(400, "用户名或密码错误");
         }
+        //校验用户状态
+        int userStatusCode = user.getStatus();
+        if(userStatusCode == UserStatus.DELETE.getCode()) {
+            return EbuyResult.build(400, "该用户已被删除");
+        }
+        if (userStatusCode == UserStatus.UNACTIVE.getCode()) {
+            return EbuyResult.build(400, "该用户未激活，请点击收信箱的激活链接");
+        }
+
         //生成token
         String token = UUID.randomUUID().toString();
         //清空密码
@@ -102,6 +126,25 @@ public class UserServiceImpl implements UserService {
         jedisClient.expire(USER_SESSION + ":" + token, SESSION_EXPIRE);
         TbUser user = JsonUtils.jsonToPojo(userJson, TbUser.class);
         return EbuyResult.ok(user);
+    }
+
+
+
+
+    @Override
+    public TbUserReg getByUserName(String username) {
+        List<TbUserReg> userRegs = tbUserRegDao.selectByUserName(username);
+        //List<TbUserReg> userRegs = tbUserRegDao.listUser();
+        if(userRegs != null && userRegs.size() > 0) {
+            return userRegs.get(0);
+        } else {
+            return new TbUserReg();
+        }
+    }
+
+    @Override
+    public int activeUser(String username) {
+        return tbUserRegDao.updateStatus(UserStatus.ACTIVE.getCode(), username);
     }
 
     @Override
@@ -141,6 +184,26 @@ public class UserServiceImpl implements UserService {
         user.setPassword(md5Pass);
         //插入数据
         tbUserDao.insert(user);
+        //生成激活码
+        String code = IDUtils.getRandomString(8);
+        //将code发送给rabbitmq，emialServer消费queue
+        sendRegQueue(user.getEmail()+ "_" + user.getUsername() + "_" + code);
+        try {
+            tbUserRegDao.insert(user.getUsername(), code);
+        } catch (Exception e) {
+            LOG.error("UserServiceImpl.register.insertUserRegERROR=========",e);
+        }
+
         return EbuyResult.ok();
+    }
+
+    private void sendRegQueue(String code) {
+        LOG.info("UserServiceImpl.sendRegQueue.code: {}", code);
+        try {
+            amqpTemplate.convertAndSend(EBUY_REG_QUEUE, code);
+        } catch (Exception e) {
+            LOG.error("邮件发送失败，code：{}", code);
+        }
+
     }
 }

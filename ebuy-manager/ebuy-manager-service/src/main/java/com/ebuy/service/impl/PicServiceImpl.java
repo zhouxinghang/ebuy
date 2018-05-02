@@ -30,7 +30,7 @@ public class PicServiceImpl implements PicService {
     private String filePath;
     @Override
     public String uploadFile(InputStreamBeanImpl inputStream, String fileName) {
-        String name = IDUtils.genImageName() + fileName.substring(fileName.lastIndexOf("."));
+        String name = IDUtils.getImageName() + fileName.substring(fileName.lastIndexOf("."));
         boolean result = FtpUtil.uploadFile(host, port, username, password, basePath, filePath, name, inputStream);
         if(result) {
             //return "http://" + host + basePath + filePath + name;
@@ -43,7 +43,7 @@ public class PicServiceImpl implements PicService {
 
     @Override
     public String uploadFile(byte[] bytes, String fileName) {
-        String name = IDUtils.genImageName() + fileName.substring(fileName.lastIndexOf("."));
+        String name = IDUtils.getImageName() + fileName.substring(fileName.lastIndexOf("."));
         boolean result = FtpUtil.uploadFile(host, port, username, password, basePath, filePath, name, new ByteArrayInputStream(bytes));
         if(result) {
             //return "http://" + host + basePath + filePath + name;

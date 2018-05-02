@@ -2,9 +2,14 @@ package com.ebuy.sso.controller;
 
 import com.ebuy.common.pojo.EbuyResult;
 import com.ebuy.common.util.CookieUtils;
+import com.ebuy.common.util.IDUtils;
 import com.ebuy.common.util.JsonUtils;
 import com.ebuy.pojo.TbUser;
+import com.ebuy.pojo.TbUserReg;
 import com.ebuy.sso.service.UserService;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.converter.json.MappingJacksonValue;
@@ -23,8 +28,11 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class UserController {
+    private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
+
     @Value("${TOKEN_KEY}")
     private String TOKEN_KEY;
 
@@ -38,8 +46,11 @@ public class UserController {
     @PostMapping("/user/register")
     @ResponseBody
     public EbuyResult regitster(TbUser user) {
-        EbuyResult result = userService.register(user);
-        return result;
+        if(user != null) {
+            EbuyResult result = userService.register(user);
+            return result;
+        }
+        return new EbuyResult();
     }
 
 
@@ -66,5 +77,24 @@ public class UserController {
             return mappingJacksonValue;
         }
         return result;
+    }
+
+    /**
+     * 用户注册激活
+     * @param username  用户名
+     * @param code  激活码
+     * @return
+     */
+    @GetMapping("/user/active")
+    public String activeUser(String username, String code) {
+        //LOG.info("UserController.activeUser userName:{}", username);
+        TbUserReg userReg = userService.getByUserName(username);
+        //LOG.info("UserController.activeUser userRegCode: {}", userReg.getCode());
+        if(code.equals(userReg.getCode())) {
+            userService.activeUser(username);
+        } else {
+            LOG.info("UserController.activeUser.激活密钥出错 错的激活密钥：{}，正确的激活密钥：{}",code,userReg.getCode());
+        }
+        return "login";
     }
 }

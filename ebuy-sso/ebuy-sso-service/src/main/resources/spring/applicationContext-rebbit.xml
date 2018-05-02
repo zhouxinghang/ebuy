@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context-3.0.xsd
+                        http://www.springframework.org/schema/rabbit
+                        http://www.springframework.org/schema/rabbit/spring-rabbit-1.0.xsd
+                        http://www.springframework.org/schema/util
+                        http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:properties/*.properties" />
+    <bean id="jsonMessageConverter" class="org.springframework.amqp.support.converter.Jackson2JsonMessageConverter" />
+    <!-- 定义连接工厂,用于创建连接等 -->
+    <rabbit:connection-factory id="connectionFactory"
+                               username="${rabbitmq.username}" password="${rabbitmq.password}" host="${rabbitmq.host}"
+                               port="${rabbitmq.port}" />
+    <rabbit:admin connection-factory="connectionFactory" />
+    <!-- 给模板指定转换器 -->
+    <rabbit:template id="amqpTemplate" exchange="mq-exchange"  connection-factory="connectionFactory" message-converter="jsonMessageConverter"/>
+
+    <!-- queue 队列声明
+         durable：true、false true：在服务器重启时，能够存活
+         exclusive ：是否为当前连接的专用队列，在连接断开后，会自动删除该队列
+         autodelete：当没有任何消费者使用时，自动删除该队列 -->
+    <!-- 对外接口保存日志队列 -->
+    <rabbit:queue id="queue.ebuy.reg" durable="true" auto-delete="false"
+                  exclusive="false" name="queue.ebuy.reg" />
+    <!-- 这一段可以不写 -->
+    <rabbit:direct-exchange name="mq-exchange"
+                            durable="true" auto-delete="false" id="mq-exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="queue.ebuy.reg" key="queue.ebuy.reg" />
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+</beans>
