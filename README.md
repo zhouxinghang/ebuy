@@ -230,7 +230,7 @@ java.lang.NullPointerException
 ###  manager管理模块商品规格参数管理开发 doing
     tb_item_param ，tb_item_param_item
     
-### 商品详情页 左侧小广告
+### 商品详情页 左侧小广告  done
     ```
     <div class="left">
     		<div id="miaozhen7886" class="m"><a href="http://c.nfa.jd.com/adclick?sid=2&amp;cid=163&amp;aid=817&amp;bid=7853&amp;unit=69570&amp;advid=156740&amp;guv=&amp;url=http://sale.jd.com/act/IFkpQYSVnG1Jet.html" target="_blank"><img data-img="2" width="211" height="261" src="http://image.zhouxinghang.com/hope.jpg" class="loading-style2"></a></div>
@@ -248,11 +248,13 @@ java.lang.NullPointerException
     item.jsp页面，引入微博的js，添加自己的appkey
     
      
-### 登录注册页面优化 todo
+### 登录注册页面优化 done
 
 ### 商品详情评价功能 todo
 
 ### 添加mycat数据库中间件  todo
 
 
-### 实现邮箱注册，添加验证码
+### 实现邮箱注册，添加验证码 done 改为了链接激活
+
+### 建立一个新的controller，整合swaggewr2。用来调试所有的servier，将所有的dubbo服务都引入。 todo

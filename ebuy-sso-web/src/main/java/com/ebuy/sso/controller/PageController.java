@@ -1,5 +1,7 @@
 package com.ebuy.sso.controller;
 
+import com.dianping.cat.Cat;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,8 @@ public class PageController {
     @RequestMapping("/page/login")
     public String showLogin(String url, Model model) {
         model.addAttribute("redirect", url);//设置回调url，为空就回调到portal-web首页
+        Cat.logEvent("PageController", "SUCCESS");
+        Cat.logMetricForCount("/page/login");
         return "login";
     }
 

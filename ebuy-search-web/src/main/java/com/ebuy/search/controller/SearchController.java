@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import io.swagger.annotations.Api;
+
 
 /**
  * Created by admin on 2017/12/27.
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 
 @Controller
+@Api(tags = "商品搜索Controller")
 public class SearchController {
     private static final Logger LOG = LoggerFactory.getLogger(SearchController.class);
     @Autowired

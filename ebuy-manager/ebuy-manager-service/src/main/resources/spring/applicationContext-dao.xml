@@ -20,6 +20,7 @@
 		<property name="driverClassName" value="${jdbc.driver}" />
 		<property name="maxActive" value="10" />
 		<property name="minIdle" value="5" />
+		<property name="filters" value="stat" />
 	</bean>
 	<!-- SqlSessionFactory -->
 	<!-- 让spring管理sqlsessionfactory 使用mybatis和spring整合包中的 -->
@@ -33,5 +34,26 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.ebuy.dao" />
 	</bean>
+	<!-- Druid AOP配置 -->
+	<bean id="druid-stat-interceptor"
+		  class="com.alibaba.druid.support.spring.stat.DruidStatInterceptor">
+	</bean>
+
+	<bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut"
+		  scope="prototype">
+		<property name="patterns">
+			<list>
+				<value>com.ebuy.dao.*</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 打开监控 -->
+	<aop:config>
+		<aop:advisor advice-ref="druid-stat-interceptor"
+					 pointcut-ref="druid-stat-pointcut" />
+	</aop:config>
+	<!-- 打开面向切面工具 -->
+	<aop:aspectj-autoproxy />
 	
 </beans>

@@ -2,6 +2,7 @@ package com.ebuy.search.service;
 
 import com.ebuy.common.pojo.SearchResult;
 
+
 /**
  * Created by admin on 2017/12/27.
  */
